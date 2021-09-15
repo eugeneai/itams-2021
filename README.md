@@ -1,4 +1,4 @@
-# paper-2021-iwci
+# ITAMS 2021 paper
 Paper with working name "Web-GIS viewer for active faults data represented as a knowledge graph" for ITAMS-2021
 
 Evgeny Cherkashin (ISDCT SB RAS),
