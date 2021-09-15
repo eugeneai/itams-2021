@@ -100,25 +100,26 @@
 \setbeamercolor{background canvas}{bg=white}
 
 
-% \title{Web-GIS viewer for active faults data represented as a knowledge graph}
-% \author[E.~Cherkashin, O.~Lunina, L.~Demyanov, A.~Tsygankov]{\bfseries%
-%   \underline{Evgeny Cherkashin}, Oksana Lunina,  Leonid Demyanov, Alexander Tsygankov}
-% \institute{\normalsize Matrosov Institute for System Dynamics and Control Theory, \\ SB RAS, Irkutsk, Russia\\
-%   Institute of the Earth’s Crust, SB RAS, Irkutsk, Russia\\
-%   Institute of Mathematics and Information Technologies, Irkutsk State University, Irkutsk, Russia\\
-%   Institute of Information Techniques and Data Analysis, National Research Irkutsk State Technical University, Irkutsk, Russia
-%   \\[1em]
-% \email{\href{mailto:eugeneai@icc.ru}{eugeneai@icc.ru}}%
-% }
-% \date[2021]{
-% ITAMS--2021, Irkutsk, Russia
-% }
-% %\date{\today}
-% \maketitle
+\title{Web-GIS viewer for active faults data represented as a knowledge graph}
+\author[E.~Cherkashin, O.~Lunina, L.~Demyanov, A.~Tsygankov]{\bfseries%
+  \underline{Evgeny Cherkashin}, Oksana Lunina,  Leonid Demyanov, Alexander Tsygankov}
+\institute{\normalsize Matrosov Institute for System Dynamics and Control Theory, \\ SB RAS, Irkutsk, Russia\\
+  Institute of the Earth’s Crust, SB RAS, Irkutsk, Russia\\
+  Institute of Mathematics and Information Technologies,\\ Irkutsk State University, Irkutsk, Russia\\
+  Institute of Information Techniques and Data Analysis,\\ National Research Irkutsk State Technical University, Irkutsk, Russia
+  \\[1em]
+\email{\href{mailto:eugeneai@icc.ru}{eugeneai@icc.ru}}%
+}
+\date[2021]{
+ITAMS--2021, Irkutsk, Russia
+}
+
+% \date{\today}
+\maketitle
 
 \begin{frame}
   \frametitle{Problem statement}
-  Integration the collected geological data, so they can be
+  At IWCI-2021 in ``Integration of Geological Data as a Knowledge Graph'' we proposed the following integration requirements for the collected geological data, so the data can be
   \begin{itemize}
   \item easily accessed
   \item of a standardized representation
@@ -127,7 +128,7 @@
   \item processed within Big Data paradigm
   \item represented as cartographic work (map) dynamically with/without need of GIS software installation
   \end{itemize}
-  The requested requirements are fulfilled with the present Semantic Web technologies.
+  The requested requirements were to be fulfilled with the present Semantic Web technologies.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -189,8 +190,8 @@ For the Knowledge Graphs (KG), the following is of interest.
   \begin{enumerate}
   \item Design a web-based GIS system, representing data from SPARQL endpoints
   \item Convert the existing data into RDF adhering LOD
-  \item Implement natural language query interface using GeoBase (\copyright~Borland) with a conversion into a SPARQL query
-  \item Bidirectional versioned data transfer between user GIS (QGIS, OSM Mapnik) and the SW storage % The reason of the usage of OSM Mapmik is the various already implemented data processing service, e.g., GPS traces as raw material for modeling the map.
+  \item Implement natural language query interface using GeoBase (\copyright~Borland${}^{\text{tm}}$) with a conversion into a SPARQL query
+  \item Bidirectional versioned data transfer between user GIS (QGIS, OSM Mapnik, Leaflet) and the SW storage % The reason of the usage of OSM Mapmik is the various already implemented data processing service, e.g., GPS traces as raw material for modeling the map.
   \item Implement various analytical functionality for domain problem solving
   \end{enumerate}
 \end{frame}
@@ -281,6 +282,7 @@ Information System. International Conference on Information Technology for Organ
   \end{itemize}
 \end{frame}
 
+
 \begin{frame}
   \frametitle{Integrating LOD into GIS}
   % Figure of GIS and SPARQL query
@@ -288,11 +290,49 @@ Information System. International Conference on Information Technology for Organ
   \includegraphics[width=0.65\linewidth]{integrating-lod-gis-arch.png}
 \end{frame}
 
+% ----- TODO: Our part ------
+
 \begin{frame}
-  \frametitle{Integrating LOD into GIS}
-  % Figure of GIS and SPARQL query
   \centering
-  \includegraphics[width=0.8\linewidth]{integrating-lod-gis-query.png}
+  \Large Results on developing WEB-GIS viewer
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{WEB-GIS viewer of active faults of East Siberia}
+  \centering
+  \includegraphics[width=\linewidth]{faults-leaflet-all.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{WEB-GIS viewer of active faults of East Siberia}
+  \centering
+  \includegraphics[width=\linewidth]{faults-leaflet-sparql.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{WEB-GIS viewer of active faults of East Siberia}
+  \centering
+  \includegraphics[width=\linewidth]{faults-leaflet-doc.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ontology (vocabulary) of database of faults}
+  \centering
+  \includegraphics[width=\linewidth]{faults-ontology-view.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Used technologies}
+  The applications were constructed using contemporary packages.
+  \begin{itemize}
+  \item Topological basis (TB) is loaded from \url{openstreetmap.org} by
+  \item Leaflet JavaScript module wrapped in
+  \item a React.js component.
+  \item As vocabulary data source GraphDB and Apache Jena was used.
+  \item WEB-GIS application state dynamics is implemented with Redux.
+  \item Fault shapes is represented as JSON objects.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}

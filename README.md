@@ -4,4 +4,4 @@ Paper with working name "Web-GIS viewer for active faults data represented as a 
 Evgeny Cherkashin (ISDCT SB RAS),
 Oxana Lunina (IEC SB RAS) Институт земной коры
 Leonid Demyanov (IMIT ISU)
-Tsygankov Alexander (ITAD IrNITU) ИТАД ИрНИТУ
+Alexander Tsygankov (ITAD IrNITU) ИТАД ИрНИТУ
