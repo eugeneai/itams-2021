@@ -1,0 +1,15 @@
+
+*.bbl
+*.aux
+*.dvi
+*.log
+*.toc
+*.out
+*.vrb
+*.snm
+*.nav
+*.fdb_latexmk
+*.fls
+/auto/
+/matter/
+/_region_.tex
