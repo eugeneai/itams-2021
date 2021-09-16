@@ -561,7 +561,7 @@ Definition Table
     \end{column}
     \begin{column}{0.7\textwidth}
       \url{
-https://github.com/eugeneai/itams-2021/raw/master/talk-IWCI-2021-09-17.pdf}
+https://github.com/eugeneai/itams-2021/raw/master/talk-ITAMS-2021-09-17.pdf}
     \end{column}
   \end{columns}
   \vspace{3em}
@@ -573,7 +573,7 @@ https://github.com/eugeneai/itams-2021/raw/master/talk-IWCI-2021-09-17.pdf}
 \maketitle
 
 \begin{frame}
-  \frametitle{External links}\footnotesize
+  \frametitle{External links}\tiny
   \begin{thebibliography}{99}
 \bibitem{hogan} Aidan Hogan, Eva Blomqvist, Michael Cochez, Claudia D’Amato \emph{et al}. Knowledge Graphs. \url{https://arxiv.org/abs/2003.02320v5}
 \bibitem{lgd} Claus Stadler, Jens Lehmann, Konrad Höffner, Sören Auer. LinkedGeoData: A core for a web of spatial open data. Semantic Web 3 (2012) 333–354. \doi{10.3233/SW-2011-0052}
@@ -588,6 +588,8 @@ Information System. International Conference on Information Technology for Organ
 \bibitem{geolink} Michelle Cheatham, Adila Krisnadhi, Reihaneh Amini, Pascal Hitzler, \emph{et al} (2018) The GeoLink knowledge graph, Big Earth Data, 2:2, 131-143, \doi{10.1080/20964471.2018.1469291}
 
 \bibitem{lunina} Oksana V. Lunina.  The digital map of the pliocene quaternary crustal faults in the southern east siberia and the adjacent northern Mongolia. Geodynamics \& Tectonophysics. 2016. 7(3):407-434. \doi{10.5800/GT-2016-7-3-0215}
+\bibitem{foss} Mathias Leidig, Richard Teeuw. Free software: A review, in the context of disaster management. 2015. International Journal of Applied Earth Observation and Geoinformation,
+Vol.~42, pp.~49-56, ISSN 0303-2434, \doi{10.1016/j.jag.2015.05.012}.
 \end{thebibliography}
 \end{frame}
 
@@ -598,9 +600,9 @@ Information System. International Conference on Information Technology for Organ
 \end{frame}
 
 
-\begin{frame}\centering
-  \Large Existing geological GIS resources
-\end{frame}
+% \begin{frame}\centering
+%   \Large Existing geological GIS resources
+% \end{frame}
 
 
 \begin{frame}
@@ -624,20 +626,20 @@ Information System. International Conference on Information Technology for Organ
   \includegraphics[width=\linewidth]{italy-2.png}
 \end{frame}
 
-\begin{frame}\centering
-  \Large Resources to be presented
-\end{frame}
+% \begin{frame}\centering
+%   \Large Resources to be presented
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{Active faults of the South of East Siberia}
+%   % Screenshot of the system
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{activetectonics.png}
+%   \url{http://http://activetectonics.ru/}
+% \end{frame}
 
 \begin{frame}
-  \frametitle{Active faults of the South of East Siberia}
-  % Screenshot of the system
-  \centering
-  \includegraphics[width=0.9\linewidth]{activetectonics.png}
-  \url{http://http://activetectonics.ru/}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Technologies used (open source)}
+  \frametitle{Additional technologies used in KG storing and processing}
   Python-3.x.x (\url{http://python.org})\\
   ZCA (\url{https://muthukadan.net/docs/zca.html})\\
   SWIG (\url{http://swig.org/})\\
@@ -660,20 +662,20 @@ Information System. International Conference on Information Technology for Organ
   Authoring Tool (\url{https://github.com/isu-enterprise/isu.college})
 \end{frame}
 
-% \begin{frame}[fragile]
-%   \frametitle{Semantic Web technologies in representation of models
-%     during transformation}
-%   \begin{itemize}
-%   \item Assimilates experience of domain basic researches trending to standardization;
-%   \item Regular set of triples denote a graph (T-Box, A-Box);
-%   \item Standard vocabularies are formally described (\verb|rdfs:domain|, \verb|rdfs:range|);
-%   \item Supported with most programming systems (libraries, inference engines, SPARQL);
-%   \item RDF has a way of global element identification, \emph{i.e.} we can refer the same object from different software systems;
-%   \item SWI-Prolog supports direct queries to a graph, as well as interpreting some predicates (\verb|rdfs:label|, \verb|dc:title|), wraps sparse RDF structure into a predicate arguments; ontological server ClioPatria;
-%   \item There is simple way of data security implementation (\verb|rdfs:seeAlso|);
-%   \item By means of Semantic Web \& LOD we are able to organize data transfer between heterogeneous information systems.
-%   \end{itemize}
-% \end{frame}
+\begin{frame}[fragile]
+  \frametitle{Semantic Web technologies in representation of models
+    during transformation}
+  \begin{itemize}
+  \item Assimilates experience of domain basic researches trending to standardization;
+  \item Regular set of triples denote a graph (T-Box, A-Box);
+  \item Standard vocabularies are formally described (\verb|rdfs:domain|, \verb|rdfs:range|);
+  \item Supported with most programming systems (libraries, inference engines, SPARQL);
+  \item RDF has a way of global element identification, \emph{i.e.} we can refer the same object from different software systems;
+  \item SWI-Prolog supports direct queries to a graph, as well as interpreting some predicates (\verb|rdfs:label|, \verb|dc:title|), wraps sparse RDF structure into a predicate arguments; ontological server ClioPatria;
+  \item There is simple way of data security implementation (\verb|rdfs:seeAlso|);
+  \item By means of Semantic Web \& LOD we are able to organize data transfer between heterogeneous information systems.
+  \end{itemize}
+\end{frame}
 
 \begin{frame}
   \frametitle{Used ontologies}
