@@ -290,51 +290,6 @@ Information System. International Conference on Information Technology for Organ
   \includegraphics[width=0.65\linewidth]{integrating-lod-gis-arch.png}
 \end{frame}
 
-% ----- TODO: Our part ------
-
-\begin{frame}
-  \centering
-  \Large Results on developing WEB-GIS viewer
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{WEB-GIS viewer of active faults of East Siberia}
-  \centering
-  \includegraphics[width=\linewidth]{faults-leaflet-all.png}
-\end{frame}
-
-\begin{frame}
-  \frametitle{WEB-GIS viewer of active faults of East Siberia}
-  \centering
-  \includegraphics[width=\linewidth]{faults-leaflet-sparql.png}
-\end{frame}
-
-\begin{frame}
-  \frametitle{WEB-GIS viewer of active faults of East Siberia}
-  \centering
-  \includegraphics[width=\linewidth]{faults-leaflet-doc.png}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Ontology (vocabulary) of database of faults}
-  \centering
-  \includegraphics[width=\linewidth]{faults-ontology-view.png}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Used technologies}
-  The applications were constructed using contemporary packages.
-  \begin{itemize}
-  \item Topological basis (TB) is loaded from \url{openstreetmap.org} by
-  \item Leaflet JavaScript module wrapped in
-  \item a React.js component.
-  \item As vocabulary data source GraphDB and Apache Jena was used.
-  \item WEB-GIS application state dynamics is implemented with Redux.
-  \item Fault shapes is represented as JSON objects.
-  \end{itemize}
-\end{frame}
-
 \begin{frame}
   \frametitle{Publishing Geodata LOD in context dependent pages}
   The project\footnote{Adam Iwaniak, Marta Leszczuk, Marek Strzelecki, Francis Harvey, Iwona Kaczmarek. A Novel Approach for Publishing Linked Open Geodata from National Registries with the Use of Semantically Annotated Context Dependent Web Pages. International Journal of Geo-Information. 6, 252, 2017. \doi{10.3390/ijgi6080252}} goal is to convert existing GIS data into explicit knowledge, thus, forming a Spatial Data Infrastructure (SDI).
@@ -367,7 +322,7 @@ with GIS}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Enriching and improving the quality of linked data...}
+  \frametitle{Enriching and improving the quality of linked data}
 
   \begin{center}
    \includegraphics[width=0.8\linewidth]{joining-objs.png}
@@ -388,59 +343,43 @@ with GIS}
 %   % figure 2 HTML example
 % \end{frame}
 
-\begin{frame}\centering
-  \Large Existing geological GIS resources
-\end{frame}
 
+% ----- TODO: Our part ------
 
 \begin{frame}
-  \frametitle{Active faults of Japan islands}
-  % Figure of GIS and SPARQL query
   \centering
-  \includegraphics[width=\linewidth]{japan.png}
+  \Large Results on developing WEB-GIS viewer
 \end{frame}
 
+
 \begin{frame}
-  \frametitle{Active fault of Italian Peninsula}
-  % Figure of GIS and SPARQL query
+  \frametitle{WEB-GIS viewer of active faults of East Siberia}
   \centering
-  \includegraphics[width=\linewidth]{italy-1.png}
+  \includegraphics[width=\linewidth]{faults-leaflet-all.png}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Active fault of Italian Peninsula}
-  % Figure of GIS and SPARQL query
+  \frametitle{WEB-GIS viewer of active faults of East Siberia}
   \centering
-  \includegraphics[width=\linewidth]{italy-2.png}
-\end{frame}
-
-\begin{frame}\centering
-  \Large Resources to be presented
+  \includegraphics[width=\linewidth]{faults-leaflet-sparql.png}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Active faults of the South of East Siberia}
-  % Screenshot of the system
+  \frametitle{WEB-GIS viewer of active faults of East Siberia}
   \centering
-  \includegraphics[width=0.9\linewidth]{activetectonics.png}
-  \url{http://http://activetectonics.ru/}
+  \includegraphics[width=\linewidth]{faults-leaflet-doc.png}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Resources to be presented: Active faults of the South of
-    East Siberia}
-  The fault data\footnote{Oksana V. Lunina.  The digital map of the pliocene quaternary crustal faults in the southern east siberia and the adjacent northern Mongolia. Geodynamics \& Tectonophysics. 2016. 7(3):407-434. \doi{10.5800/GT-2016-7-3-0215}
-} have the following properties:
-  \begin{itemize}
-  \item Faults are the objects having linear projection on the surface, and a depth and a slope in the lithosphere
-  \item Various geological events are also subjects of presentation
-  \item Any object accompanied by various valued characteristics having also characteristics, \emph{e.g.}, unit name, measurement precision and related publications
-  \item Images, tables, expedition trails are also used as auxiliary materials.
-  \end{itemize}
+  \frametitle{Ontology (vocabulary) of database of faults}
+  \begin{center}
+    \includegraphics[width=\linewidth]{faults-ontology-view-short.png}
+  \end{center}
+  As of today, the vocabulary has flat structure: set of non-null relations to a~fault (a subject).
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Database Structure}
+  \frametitle{The Source Database Structure}
   \begin{columns}\tiny
     \begin{column}{0.5\linewidth}
 \begin{verbatim}
@@ -534,6 +473,42 @@ Definition Table
 \end{frame}
 
 \begin{frame}
+  \frametitle{The source database structure}
+  \centering
+  \includegraphics[width=\linewidth]{faults-leaflet-db-content.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Used technologies}
+  The applications were constructed using contemporary packages.
+  \begin{itemize}
+  \item Topological basis is loaded from \url{openstreetmap.org} by
+  \item \textbf{Leaflet} JavaScript module wrapped in
+  \item a \textbf{React.js} component.
+  \item As vocabulary data source \textbf{GraphDB} and\textbf{ Apache Jena} was used.
+  \item WEB-GIS application state dynamics is implemented with \textbf{Redux}.
+  \item Fault shapes is represented as \textbf{JSON} objects.
+  \item All data have been converged with \textbf{Python} modules.
+  \end{itemize}
+
+  These technologies allowed an ISU student implement viewer in 1.5 month.
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Resources to be presented: Active faults of the South of
+    East Siberia}
+  The fault data\footnote{Oksana V. Lunina.  The digital map of the pliocene quaternary crustal faults in the southern east siberia and the adjacent northern Mongolia. Geodynamics \& Tectonophysics. 2016. 7(3):407-434. \doi{10.5800/GT-2016-7-3-0215}
+} have the following properties:
+  \begin{itemize}
+  \item Faults are the objects having linear projection on the surface, and a depth and a slope in the lithosphere
+  \item Various geological events are also subjects of presentation
+  \item Any object accompanied by various valued characteristics having also characteristics, \emph{e.g.}, unit name, measurement precision and related publications
+  \item Images, tables, expedition trails are also used as auxiliary materials.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{The pollutions of Olkhon Island}
    % Generate a map from the existing data
   \centering
@@ -541,7 +516,7 @@ Definition Table
 \end{frame}
 
 \begin{frame}
-  \frametitle{System architecture}
+  \frametitle{Target system architecture}
   \centering
   \includegraphics[width=0.8\linewidth]{architecture.pdf}
 \end{frame}
@@ -607,6 +582,45 @@ Information System. International Conference on Information Technology for Organ
   \begin{center}
   \Large Auxiliary materials
 \end{center}
+\end{frame}
+
+
+\begin{frame}\centering
+  \Large Existing geological GIS resources
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Active faults of Japan islands}
+  % Figure of GIS and SPARQL query
+  \centering
+  \includegraphics[width=\linewidth]{japan.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Active fault of Italian Peninsula}
+  % Figure of GIS and SPARQL query
+  \centering
+  \includegraphics[width=\linewidth]{italy-1.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Active fault of Italian Peninsula}
+  % Figure of GIS and SPARQL query
+  \centering
+  \includegraphics[width=\linewidth]{italy-2.png}
+\end{frame}
+
+\begin{frame}\centering
+  \Large Resources to be presented
+\end{frame}
+
+\begin{frame}
+  \frametitle{Active faults of the South of East Siberia}
+  % Screenshot of the system
+  \centering
+  \includegraphics[width=0.9\linewidth]{activetectonics.png}
+  \url{http://http://activetectonics.ru/}
 \end{frame}
 
 \begin{frame}
