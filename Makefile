@@ -1,18 +1,17 @@
-<<<<<<< HEAD
-.PHONY: clean run show view
+# .PHONY: clean run show view
 
 LATEXMK=latexmk -lualatex -latexoption=-shell-escape
 # TARGET=cherkashin-proposal-aicds
-TARGET=
+TARGET=cherkashin-et-al-itams-2021
 
 TLK=talk-ITAMS-2021-09-17
 
-# run: $(TARGET).pdf
+run: $(TARGET).pdf
 
 tlk: $(TLK).pdf
 
-# $(TARGET).pdf $(TLK).pdf: %.pdf: %.tex
-$(TLK).pdf: %.pdf: %.tex
+$(TARGET).pdf $(TLK).pdf: %.pdf: %.tex
+# $(TLK).pdf: %.pdf: %.tex
 	$(LATEXMK) $<
 	$(LATEXMK) $<
 
