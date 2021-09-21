@@ -18,43 +18,20 @@ $(TLK).pdf: %.pdf: %.tex
 
 clean:
 	BIBINPUTS=$(BIBROOT) $(LATEXMK) -C
-	rm -f *.{bbl,aux,ps,dvi,log,toc,out,vrb,snm,nav} *~ ~* *.bak *.synctex.* *.thm *-joined.pdf *.wbk *_latexmk *.fls
+	-rm -f *.{bbl,aux,ps,dvi,log,toc,out,vrb,snm,nav} *~ ~* *.bak *.synctex.* *.thm *-joined.pdf *.wbk *_latexmk *.fls
 	# cd pics && make clean
+	-rm -f *.{log,toc,tac,aux,dvi,ps,bbl,blg,tmp,nav,out,snm,vrb,rel,cut,abs,xmpi,xmpdata,*~}
+	-rm -rf out _minted* auto
+	# for i in $(ALLSUBDIRS); do \
+	#    (cd $$i; make clean) || exit 1; \
+	# done
+	-rm $(FILES)
 
 show: $(TARGET).pdf
 	evince $< &
 
 view: $(TLK).pdf
 	evince $< &
-=======
-# LATEX: pdflatex | xelatex | lualatex
-LATEX = lualatex
-LATEX_FLAGS = -shell-escape
-BIBTEX = bibtex
-
-FILES = $(patsubst %.tex, %.pdf, $(wildcard *.tex))
-
-all: $(FILES)
-
-
-%.pdf: %.tex
-	$(LATEX) $(LATEX_FLAGS) $<
-	$(LATEX) $(LATEX_FLAGS) $<
-	-$(BIBTEX) `basename $< .tex`
-	$(LATEX) $(LATEX_FLAGS) $<
-	$(LATEX) $(LATEX_FLAGS) $<
-	$(LATEX) $(LATEX_FLAGS) $<
-	qpdf --linearize --newline-before-endstream $@ /tmp/$@
-	mv /tmp/$@ $@
-
-clean:
-	-rm -f *.{log,toc,tac,aux,dvi,ps,bbl,blg,tmp,nav,out,snm,vrb,rel,cut,abs,xmpi,xmpdata,*~}
-	-rm -rf out _minted* auto
-	for i in $(ALLSUBDIRS); do \
-	    (cd $$i; make clean) || exit 1; \
-	done
-	-rm $(FILES)
 
 cleanall: clean
 	-rm -rf out auto
->>>>>>> over/master
