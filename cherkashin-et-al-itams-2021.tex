@@ -93,24 +93,33 @@ url=http://www.crust.irk.ru/member_88.html,
 
 \section{Introduction}
 
-Contemporary Web technologies development aimed at more tight data integration: standardization of data publishing formats, formal data and metadata representation, modeling interpretation contexts.  Geospatially related objects are frequently published as well.
+Contemporary Web technologies development is aimed at more tight data integration: standardization of data publishing formats, formal data and metadata representation, modeling interpretation contexts.  Geospatially related objects are frequently published as well.
 
-In this investigation the fault data are chosen as subject for representation and publishing.  Geological field investigations and event observations, \emph{e.g.}, earthquakes, accumulate data, which are analyzed resulting in association of new attributes to a fault or their refinement.  According to the techniques of geological research additional information are associated to attributes clarifying the current value.  Such clarification comprises precision characteristics, units of measurement, reliability assessment, and paper references, where a clarification was carried out and analysis results were published.
+In this investigation the fault data are chosen as subject for representation and publishing.  Geological field investigations and event observations, \emph{e.g.}, earthquakes, accumulate data, which are analyzed, resulting in setting new attributes to a fault or their refinement.  According to the techniques of geological research additional information are associated with attributes clarifying their values.  Such clarification comprises precision characteristics, measurement conditions, reliability assessment, and paper references, where fault data were published.
 
-Using tabular data representation implemented in widely used GIS\footnote{Abbreviation of Geographical Information System} for the geological data representation and storage results in violations of basis principles of relation table use.  GIS represents spatial data in semantic defined layers.  For each object of a layer, one can associate a set of attribute values of auxiliary data.  The set of the attributes are the same for each object of the layer regardless of wether the attribute value is defined for an object or not.  Empty values are represented as ``\texttt{null}''s.  In the case of geological exploration data, when a lot of attributes are undefined, this approach leads to sparse filled tables.  This, in turn, requires data analysis algorithms to utilize additional data checking stages in standard relation operations (SELECT, UPDATE, DELETE).
+GIS\footnote{Abbreviation of Geographical Information System} represents spatial data in semantic defined layers.  For each object of a layer, one can associate a set of attribute values of auxiliary data.  The set of the attributes are the same for each object of the layer regardless of wether the attribute value is defined for an object or not.  Empty values are represented as ``\texttt{null}''s.  In the case of geological exploration, when a lot of attributes are undefined, this approach leads to sparse filled tables.  This, in turn, requires data modification and analysis algorithms to utilize additional data checking stages when using standard relation operations (SELECT, UPDATE, DELETE).
 
-Another question is attribute names definition expressing semantics of metadata.  For example, to define a precision of a value one could construct an attribute name with ``\texttt{\_prec}'' suffix, where name is its value attribute identifier.  Other types of metadata add more suffixes, as well as relations between suffixes and values are not defined anywhere in database.  The formal definition is to be defined in a documentation or processing algorithms, thus, either informally defined or obfuscated, and practically not alienated.  ... Adding attributes requires user ...
+Another question is attribute names definition expressing semantics of metadata.  For example, to define a precision of a value one could construct an attribute name with ``\texttt{\_prec}'' suffix, where name is its value attribute identifier.  Other types of metadata add more suffixes, as well as relations between suffixes and values are not defined anywhere in database.  The formal definition is to be defined in a documentation or processing algorithms, thus, either informally defined or obfuscated, and practically not alienated.  Adding new attributes requires user to devise new synthetic names.
 
-Web publication applications, as information systems, are to implement filtering functions, differentiating the value attributes and their metadata.  Screen widgets label names either defined in application or figured out from the attribute names.  Lack of ontological (vocabulary) formal domain definition results in spending more efforts for user interface implementation.
+Web publication applications, as information systems, are to implement filtering functions, differentiating the value attributes and their metadata.  Screen widgets label names either defined in application or figured out from the attribute names.  Lack of ontological (vocabulary) formal domain definition forces developer to spend more efforts for user interface implementation.
 
-Since 2001 Semantic Web technologies have evolved in a substantial set of instruments for data storing, publishing, and software integration, allowing system designers and programmers, among standard means, pass data between systems via published documents and application user interfaces, \emph{i.e.}, extending their set of functions.  Vocabularies and data instances are stored in graph databases, which provide SPARQL and other endpoints on top of HTTP protocols, enabling similar service as relational database servers for data access and modification.  The generalized problem statement and approaches to their solutions in the field of Semantic Web are the reasons of constant development.
+Since 2001 Semantic Web technologies have evolved in a substantial set of instruments for data storing, publishing, and software integration, allowing system designers and programmers, among standard means, pass data between systems via published documents and application user interfaces, \emph{i.e.}, extending their set of functions.  Vocabularies and data instances are stored in graph databases, which provide SPARQL and other endpoints on top of HTTP protocols, enabling similar services as relational database servers for data access and modification.  The generalized problem statements and approaches to their solutions in the field of Semantic Web are the reasons of its constant development.
 
-Knowledge graphs are techniques of Sematic Web techniques usage, aimed at practice.  .... Storage ... representaton ... joining with graph processing methods.... formal logic ....  verification.
-[Knowledge graph procs and cons.]
+Knowledge graphs (KG) \cite{hogan} are techniques of Sematic Web usage aimed at representation data in a general flexible way allowing so-called ``natural'' evolving of domain image, including representation of incomplete knowledge.  This evolution correspond to a scientific research process, where data is accumulated and analyzed.  KG enables both providing in addition distributed storage, federated query based access and modification, means for metadata definition, and formalized verification of its content.
 
+The aim of this research and development is to represent existing tabular and spatial data from \cite{lunina,afs} as a knowledge graph with implementing a viewer, assessing ``working efficiency'' of a programmer and ``usability'' of KG services.  State further development perspectives, ranging them by priorities.
 
-Allows to solve main problem of constant improvement of data representation with respect to extending problem domain and the quality of the representation.
+\section{Data conversion}
 
+\section{Viewer implementation}
+
+\section{Examples of usage}
+
+\section{Related Works}
+
+\section{Future activity plan}
+
+\section{Conclusion}
 
 
 CEUR-WS's article template provides a consistent \LaTeX{} style for
@@ -530,8 +539,6 @@ numbered.
 
 \begin{thebibliography}{99}
 
-\bibitem{kgreview}
-
 \bibitem{hogan} Aidan Hogan, Eva Blomqvist, Michael Cochez, Claudia D’Amato \emph{et al}. Knowledge Graphs. \url{https://arxiv.org/abs/2003.02320v5}
 \bibitem{lgd} Claus Stadler, Jens Lehmann, Konrad Höffner, Sören Auer. LinkedGeoData: A core for a web of spatial open data. Semantic Web 3 (2012) 333–354. \doi{10.3233/SW-2011-0052}
 
@@ -545,6 +552,7 @@ Information System. International Conference on Information Technology for Organ
 \bibitem{geolink} Michelle Cheatham, Adila Krisnadhi, Reihaneh Amini, Pascal Hitzler, \emph{et al} (2018) The GeoLink knowledge graph, Big Earth Data, 2:2, 131-143, \doi{10.1080/20964471.2018.1469291}
 
 \bibitem{lunina} Oksana V. Lunina.  The digital map of the pliocene quaternary crustal faults in the southern east siberia and the adjacent northern Mongolia. Geodynamics \& Tectonophysics. 2016. 7(3):407-434. \doi{10.5800/GT-2016-7-3-0215}
+\bibitem{afs} Server activefaults.ru
 \bibitem{foss} Mathias Leidig, Richard Teeuw. Free software: A review, in the context of disaster management. 2015. International Journal of Applied Earth Observation and Geoinformation,
 Vol.~42, pp.~49-56, ISSN 0303-2434, \doi{10.1016/j.jag.2015.05.012}.
 \end{thebibliography}
