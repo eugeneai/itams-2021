@@ -64,7 +64,7 @@ url=http://www.crust.irk.ru/member_88.html,
 
 \author[3]{Leonid O. Demyanov}
 
-\address[3]{Institute for Mathematics and Informational Technologies, Irkutsk State University, 20~Gagarina Bulv, Irkutsk, 664003, Russian Federation}
+\address[3]{Institute for Mathematics and Information Technologies, Irkutsk State University, 20~Gagarina Bulv, Irkutsk, 664003, Russian Federation}
 
 \author[4]{Alexander V. Tsygankov}
 
@@ -97,9 +97,9 @@ url=http://www.crust.irk.ru/member_88.html,
 
 Contemporary Web technologies development is aimed at more tight data integration: standardization of data publishing formats, formal data and metadata representation, unifying interpretation contexts, referring to external entities.  Geospatially related objects are frequently published in the requirements as well.
 
-Geospatial data are of primary interest of people as many human activities are attached to object located on the Earth's surface.  There are a lot of on-line services helping users to navigate, figure out the places corresponding the required conditions (shopping centers, parking places, \emph{etc.}), observation of territories to familiarize themselves.  The objects of interest as any data objects are described with attributes of various kinds, like working hours of firms, their home site URLs, nearby bus stations.  At present, these software products trend to allow integration with their data via open formats and publishing principles, \emph{e.g.}, Linked Open Data.
+Geospatial data are of primary interest of people as many human activities are attached to object located on the Earth's surface.  There are a lot of on-line services helping users to navigate city streets, figure out places corresponding the required conditions (shopping centers, parking places, \emph{etc.}), observation of territories to familiarize themselves.  The objects of interest as any data objects are described with attributes of various kinds, like working hours of firms, their home site URLs, nearby bus stations.  At present, these software products trend to allow integration with their data via open formats and publishing principles, \emph{e.g.}, Linked Open Data \cite{lod}.
 
-In this investigation, the fault data are chosen as subject for representation and publishing.  Geological field investigations and event observations, \emph{e.g.}, earthquakes, accumulate data, which are analyzed, resulting in setting new attributes to a fault or their refinement.  According to the techniques of geological research, additional information are associated with attributes, clarifying their values.  Such clarification comprises precision characteristics, measurement conditions, reliability assessment, and paper references, where fault data were published.
+The fault data are chosen as subject for representation and publishing in this investigation.  In the geology, researchers accumulate data obtained after an event observations, \emph{e.g.}, earthquakes, landslides, by analyzing remote sensing data and results of field works.  The obtained data are processed and interpreted, resulting in setting new attributes to a fault or their refinement.  According to the techniques of geological research, additional information are associated with attributes, clarifying their values.  Such clarification comprises precision characteristics, measurement conditions, reliability assessment, and paper references, where fault data were published.
 
 GIS\footnote{Abbreviation of Geographical Information System} represents spatial data in semantic defined layers.  For each object of a layer, one can associate a set of attribute values of auxiliary data.  The set of the attributes are the same for each object of the layer regardless of whether the attribute value is defined for an object or not.  Empty values are represented as ``\texttt{null}''s.  In the case of geological exploration, when a lot of attributes are undefined, this approach leads to sparse filled tables.  This, in turn, requires data modification and analysis algorithms to utilize additional data checking stages when using standard relation operations (SELECT, UPDATE, DELETE).
 
@@ -326,11 +326,29 @@ The target infrastructure architecture is shown in Figure~\ref{fig:target}.  The
 
 \section*{Conclusion}
 
-Viewer in essence interprets partially SPARQL-quarries as maps.
+The proposed technology and software allows one to construct Web-GIS systems for research communities, as they support constant data accumulation, aggregation and analysis thanks to the properties of knowledge graph (KG) data storage and processing.  The following properties of KG can be utilized for providing research environment
+ \begin{itemize}
+  % \item Converged notions \textbf{data} and \textbf{knowledge} as something is \textbf{known}
+  \item Object data, relations, and metadata (vocabularies) are representable in KG;
+  \item Processes of \textbf{node formation} and \textbf{improvement} of graph structure are done in parallel, \emph{e.g.}, with UPDATE SPARQL queries;
+  \item Developers can \textbf{postpone} the formal definition of data schemata;
+  \item KG is interpreted in three types of fundamental schemata:
+    \begin{itemize}
+    \item \textbf{semantic}, aimed at representation of basis relations and type structures,
+    \item \textbf{validating}, \emph{e.g.}, diligent formal definition in a KG can be verified w.r.t. sets of interpreting rules, and
+    \item \textbf{emergent} aimed at inferring sets of more generalized structures and \textbf{reconstruction} a KG structure.
+    \end{itemize}
+  \end{itemize}
 
+In the most of domains, the existing data can be easily converted to a KG, loaded to a KG server and be accessed via SPARQL endpoints.  A familiar tabular representation can be reconstructed with queries.  Spending a reasonable time finding relevant to the domain vocabularies (ontologies) and adapting data conversion procedures to these vocabularies, one can obtain a common model description of a problem and shift data publishing and integration to a more higher level.
+
+In order to construct an environment for natural phenomena spatial modeling and master KG technologies, we created a GIS viewer for existing data converted in a KG \cite{lunina}.  The viewer interprets SPARQL queries results as a map.  The nowadays Web 2.0 and 3.0 technologies allowed us to construct individual GIS application in a reasonable time, namely, two students constructed the application MVP in two months.  This is thanks to the present levels of technologies and quality of libraries.
 
 \begin{acknowledgments}
 
+The results were obtained within the state assignment of the Ministry of Education and Science of Russia, the project ``Methods and technologies of a cloud-based service-oriented digital platform for collecting, storing and processing large volumes of multi-format interdisciplinary data and knowledge based on the use of artificial intelligence, a model-driven approach and machine learning'' (State registration No.~121030500071-2).
+
+  The results obtained with the use of the network infrastructure of Telecommunication center of collective use ``Integrated information-computational network of Irkutsk scientific-educational complex'' (\url{http://net.icc.ru}).
 \end{acknowledgments}
 
 %%
@@ -360,6 +378,7 @@ Vol.~42, pp.~49-56, ISSN 0303-2434, \doi{10.1016/j.jag.2015.05.012}.
 
 \bibitem{zont19}  Cherkashin E, Shigarov A and Paramonov V 2019 Representation of MDA transformation with logical objects \emph{International Multi-Conference on Engineering, Computer and Information Sciences (SIBIRCON), Novosibirsk, Russia} 0913--8 \doi{10.1109/SIBIRCON48586.2019.8958008}
 
+  \bibitem{lod}
 
 \end{thebibliography}
 
