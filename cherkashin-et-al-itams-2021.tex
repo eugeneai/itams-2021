@@ -74,7 +74,7 @@ url=http://www.crust.irk.ru/member_88.html,
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-  A problem of flexible geographical data representation and Web-based visualization is considered.  The data stored in a knowledge graph as ontologies (vocabularies) in accordance to W3C standards.  For viewing data, a web geographical information system (GIS) application is realized, which renders map interpreting SPARQL queries to Sematic Web server storing the knowledge graph.  The technologies used for designing are based on contemporary Web 3.0, allowing one to implement Linked Open Data compliance for GIS information publishing and integration.
+  A problem of flexible geographical data representation and Web-based visualization is considered.  The data stored in a knowledge graph as ontologies (vocabularies) in accordance to W3C standards.  For viewing data, a web geographical information system (GIS) application is realized, which renders map interpreting SPARQL queries to Sematic Web server storing the knowledge graph.  The technologies used for designing are based on contemporary Web 3.0, allowing one to implement Linked Open Data (LOD) compliance for GIS information publishing and integration.
 \end{abstract}
 
 %%
@@ -244,13 +244,13 @@ Our viewer is a Web-2.0 application composed out of React components.  The appli
 
 Rendering maps is based on React wrapper of \texttt{leaflet.js} library.  The library allows one to draw interactive graphics objects (polygons) on a topological basis.  Leaflet supports various sources, such as \href{https://openstreetmap.org/}{openstrrtmpa.org}, which is default one.  Fault shapes were converted from \texttt{KML} format to leaflet interpretable \texttt{JSON} and are being loaded by application on demand from web server.
 
-By default, viewer shows all faults from KG, the result of a SPARQL query requesting all objects of a class \texttt{aft:Fault}\footnote{\url{http://irnok.net/ontologies/ActiveFaultTerms\#Fault}}, \emph{i.e.} all the instances\footnote{All faults are instances of \texttt{aft:Fault}}.  There is a form in the user interface for setting filtering conditions.  They change the default SPARQL query, adding restrictions.  For the debugging and developing, one version of the viewer contains a form for free-form SPARQL query definition, which execution results also showed as a fault map.
+By default, viewer shows all faults from KG, the result of a SPARQL query requesting all objects of a class \texttt{aft:Fault}\footnote{Abbreviated namespace synonym of \url{http://irnok.net/ontologies/ActiveFaultTerms\#Fault}.}, \emph{i.e.} all the instances\footnote{All faults are instances of \texttt{aft:Fault}.}.  There is a form in the user interface for setting filtering conditions.  They change the default SPARQL query, adding restrictions.  For the debugging and developing, one version of the viewer contains a form for free-form SPARQL query definition, which execution results also showed as a fault map.
 
 Viewing fault attributes is implemented as a form document improved with \texttt{RDFa} markup.  This markup originates from results of SPARQL query selecting all the predicate relation for the chosen fault.
 %
 % \subsection{Examples of the usage}
 %
-In Figure~\ref{fig:ex}, viewer window is shown.  As a subject of interest, Irkut-Ushakovsky fault being extended through Irkutsk city is chosen.
+In Figure~\ref{fig:ex}, viewer window is shown.  The image consists of topological basis loaded from \texttt{openstreetmap.org} server, faults drawn over the basis, filter form at the left hand side, expanding form of free-text SPARQL query, popup with fault name pointing the fault shape, and a form showing known attributes of the fault.  As a subject of interest, Irkut-Ushakovsky fault being extended through Irkutsk city is chosen.
 
 \begin{figure}
   \centering
@@ -262,57 +262,45 @@ In Figure~\ref{fig:ex}, viewer window is shown.  As a subject of interest, Irkut
 
 \section{Related Works}
 
-  The project\footnote{Claus Stadler, Jens Lehmann, Konrad Höffner, Sören Auer. LinkedGeoData:
-A core for a web of spatial open data. Semantic Web 3 (2012) 333–354. \doi{10.3233/SW-2011-0052}} was to represent OpenSteetMap (OSM) data as a KG,
+The activity related to the subject of our investigation are observed since beginning of 2010-th.  At that time probably a lot of vocabularies were standardized, their representation data formats become widely used.  At that time various XML processing techniques and tools were developed, \emph{e.g.}, XPath, XQuery, XSL\footnote{Abbreviation of eXtensible Stylesheet Language, a technology for processing XML structures.}, as well as SPARQL standards were acknowledged (2008, v.~1.0, 2013, v.~1.1).  Thus, in early 2010-ths Semantic Web becomes not only academic field of interest, but also a set of technologies, oriented on solving practical problems.  Among found, we would like to mention the following projects.
+
+  The project \cite{lgd} was to represent OpenSteetMap (OSM) data as a KG, they
   \begin{itemize}
-  \item Resembles the DBPedia project formalizing Wikipedia data but over the OSM database
-  \item Converts SM data into RDF adhering LOD
-  \item Designed an ontology for object georeferencing (nodes)
-  \item Related the object to DBpedia, GeoNames, icon sets
-  \item Developed a taxonomy of the objects on a various levels (Road~\to~Way (list of nodes)) % and Fig 3 of the LGD paper.
-  \item Stated the relations between nodes and ways defining complex objects
-  \item Implemented REST and SPARQL (does not work now) endpoints for actual data
-  \item Had a live updates services from OSM change sets.
+  \item Resemble the \texttt{DBPedia.org} project formalizing Wikipedia data but over the OSM database;
+  \item Convert OSM data into RDF adhering LOD principles;
+  \item Designed a vocabulary for object georeferencing;
+  \item Related the objects to DBpedia, GeoNames, various icon sets;
+  \item Developed a taxonomy of the objects on a various levels (road~\to~way (list of nodes)); % and Fig 3 of the LGD paper.
+  \item Stated the relations between nodes and means for defining complex objects;
+  \item Implemented REST and SPARQL endpoints for actual data;
+  \item Realized a live updates services from OSM change sets.
   \end{itemize}
+  Thus, it was probably the first work no representation of spatial data as a KG.
 
-
-    GeolLink KG\footnote{Michelle Cheatham, Adila Krisnadhi, Reihaneh Amini, Pascal Hitzler, \emph{et al} (2018) The GeoLink knowledge graph, Big Earth Data, 2:2, 131-143, \doi{10.1080/20964471.2018.1469291}}
+  GeolLink KG project \cite{geolink} is aimed at representation various aspects of complex investigations of Earth's surface and bowels.
   \begin{itemize}
-  \item Includes diverse information as port calls made by oceanographic cruises, physical sample metadata, research project funding and staffing, and authorship of technical reports
-  \item Implements LOD (4 of 5 stars) and federated SPARQL integration
-  \item Contains 45 millions RDF triples with ontologies and geo-visualization tools
-  \item Describes interlinked \textbf{R2R}, expeditions, \textbf{BCO-DMO}, oceanography, \textbf{IODP}, ocean floor microbiome, \textbf{MBLWHOI}, marine life papers, \textbf{SESAR}, rock samples, \textbf{DataONE}, metadata of external research,  \textbf{AGU-NSF}, projects \& conferences, \textbf{NGDB}, sediment geochemy, \textbf{USAP}, Antarctica ice.
+  \item KG includes diverse information as port calls made by oceanographic cruises, physical sample metadata, research project funding and staffing, and authorship of technical reports;
+  \item Implements LOD (4 of 5 stars) and federated SPARQL integration between distributed parts of KG;
+  \item Contains 45 millions RDF triples with vocabularies and geo-visualization tools
+  \item Describes interlinked expeditions (\textbf{R2}), oceanography (\textbf{BCO-DMO}), ocean floor microbiome (\textbf{IODP}), marine life papers (\textbf{MBLWHOI}), rock samples (\textbf{SESAR}), metadata of external research (\textbf{DataONE}),  projects \& conferences (\textbf{AGU-NSF}), sediment geochemy (\textbf{NGDB}), Antarctica ice (\textbf{USAP}).
   \end{itemize}
   In the project, an update procedure (harvesting) is implemented to ensure the consistence of the KG w.r.t. the geo-base ontology (GBO).
 
+   The project \cite{abid} deals with developing a web GIS automatically publishing DBPedia data.  The aim was to test Web-application tools capabilities in implementing GIS, which publishes celebrities' information living in a hometown/city. The publishing is realized respecting LOD and Open Government Data principles.   GIS module was realized on the topological basis and API~v3 of Google. Celebrities' attribute data is loaded from DBPedia with SPARQL queries and rendered with jQuery's Data table plug-in.
 
-   The project\footnote{Tarek Abid, Hafed Zarzour. Integrating Linked Open Data in Geographical
-Information System. International Conference on Information Technology for Organization Development. 2014. } deals with developing a web GIS automatically publishing DBPedia data.
+   The project \cite{iwaniak17} goal is to convert various existing GIS data into explicit knowledge, thus, forming a Spatial Data Infrastructure (SDI). The following requirements are to be met.
   \begin{itemize}
-  \item LOD resembles Open Government Data principles
-  \item Modules are
-    \begin{itemize}
-    \item GIS is Google Map API v3
-    \item SPARQL used to query DBPedia
-    \item Viewing DBPedia data with Data Table plug-in of JQuery
-    \end{itemize}
-  \item Test application allows user querying celebrities by their hometown/city pointed by mouse on the Google Map.
+  \item Integrate existing geoportal data into a KB, including dynamic data;
+  \item Geoportal data must be LOD, \emph{e.g.}, HTML is enriched with RDFa;
+  \item KG relation interpreters are implemented as knowledge based systems (named as expert systems), for example, ``building near forest'';
+  \item Semantic enrichment of raw data to make it more usable/discoverable;
+  \item Spatial properties of objects are figured out and processed with specialized GIS;
+  \item Targeting to GeoSPARQL (sfIntersects, sfOverlaps, sfTouches, sfWithin, sfContains) language extension;
+  \item Metadata inference from the data source properties;
   \end{itemize}
+  The developed technologies are used to integrate public services data in Mazowieckie Voivodeship of Poland accounting European Union Open Government initiative.  For the user, the filtering queries are realized by interpreting a limited set of keywords.
 
-   The project\footnote{Adam Iwaniak, Marta Leszczuk, Marek Strzelecki, Francis Harvey, Iwona Kaczmarek. A Novel Approach for Publishing Linked Open Geodata from National Registries with the Use of Semantically Annotated Context Dependent Web Pages. International Journal of Geo-Information. 6, 252, 2017. \doi{10.3390/ijgi6080252}} goal is to convert existing GIS data into explicit knowledge, thus, forming a Spatial Data Infrastructure (SDI).
-  \begin{itemize}
-  \item Integrate existing geoportal data into a KB, including dynamic data
-  \item Geoportal data must be LOD, \emph{e.g.}, HTML is enriched with RDFa
-  \item Relation interpreters implemented as Expert systems (``building near forest'')
-  \item Semantic enrichment of raw data to make it more usable/discoverable
-  \item Targeting to GeoSPARQL (sfIntersects, sfOverlaps, sfTouches, sfWithin, sfContains))
-  \item Metadata inference from the data source properties
-  \item Test application is to integrate public services data in Mazowieckie Voivodeship of Poland, queries are realized by a limited set of keywords
-  \end{itemize}
-
-  Speak about improving KG with spatial processing and expert systems.
-
-  Another interesting project is ... viewing the celebrities' data querying SPARQL endpoint of DBPedia.org.
+  .... Our project ...
 
 \section{Future activity plan}
 
