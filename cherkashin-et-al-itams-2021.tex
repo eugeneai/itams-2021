@@ -99,11 +99,11 @@ Contemporary Web technologies development is aimed at more tight data integratio
 
 Geospatial data are of primary interest of people as many human activities are attached to object located on the Earth's surface.  There are a lot of on-line services helping users to navigate city streets, figure out places corresponding the required conditions (shopping centers, parking places, \emph{etc.}), observation of territories to familiarize themselves.  The objects of interest as any data objects are described with attributes of various kinds, like working hours of firms, their home site URLs, nearby bus stations.  At present, these software products trend to allow integration with their data via open formats and publishing principles, \emph{e.g.}, Linked Open Data \cite{lod}.
 
-The fault data \cite{lunina} are chosen as subject for representation and publishing in this investigation.  In the geology, researchers accumulate data obtained after an event observations, \emph{e.g.}, earthquakes, landslides, by analyzing remote sensing data and results of field works.  The obtained data are processed and interpreted, resulting in setting new attributes to a fault or refinement their values.  According to the techniques of geological research, additional information are associated with attributes, clarifying their values.  Such clarification comprises precision characteristics, measurement conditions, reliability assessment, and paper references, where fault data were published.
+The fault data \cite{lunina} are chosen as subject for representation and publishing in this investigation.  In the geology, researchers accumulate data obtained after event observations, \emph{e.g.}, earthquakes, landslides, by analyzing remote sensing data and results of field works.  The obtained data are processed and interpreted, resulting in setting new attributes to a fault or refinement of their values.  According to the techniques of geological research, additional information are associated with attributes, clarifying their values.  Such clarification comprises precision characteristics, measurement conditions, reliability assessment, and paper references, where fault data were published.
 
-GIS\footnote{Abbreviation of Geographical Information System} represents spatial data in semantic defined layers.  For each object of a layer, one can associate a set of attribute values of auxiliary data.  The set of the attributes are the same for each object of the layer regardless of whether the attribute value is defined for an object or not.  Empty values are represented as ``\texttt{null}''s.  In the case of geological exploration, when a lot of attributes are undefined, this approach leads to sparse filled tables.  This, in turn, requires data modification and analysis algorithms to utilize additional data checking stages when using standard relation operations (SELECT, UPDATE, DELETE).
+GIS\footnote{Abbreviation of Geographical Information System} represents spatial data in semantic defined layers.  For each object of a layer, one can associate a set of attribute values of auxiliary data.  The set of the attributes are the same for each object of the layer, regardless of whether the attribute value is defined for an object or not.  Empty values are represented as ``\texttt{null}''s.  In the case of geological exploration, when a lot of attributes are undefined, this approach leads to sparse filled tables.  This, in turn, requires data modification and analysis algorithms to utilize additional data checking stages when using standard relation operations (SELECT, UPDATE, DELETE).
 
-Another question is attribute names definition expressing semantics of metadata.  To define a precision of a value, one could construct an attribute name of ``\texttt{<name>\_prec}'' structure, where \texttt{<name>} is its value attribute identifier.  Other types of metadata add more suffixes, as well as relations between suffixes and values are not defined anywhere in the database.  The formal definition is to be described in documentation or defined as processing algorithms.  Thus, the inplied sematics is either informally defined or obfuscated and practically is not alienated.  Adding new attributes requires the user to devise new synthetic names.
+Another question is attribute names definition expressing semantics of metadata.  To define a precision of a value, one could construct an attribute name of ``\texttt{<name>\_prec}'' structure, where \texttt{<name>} is its value attribute identifier.  Other types of metadata add more suffixes, as well as relations between suffixes and values are not defined anywhere in the database.  The formal definition is to be described in documentation or defined as processing algorithms.  Thus, the implied semantics is either informally defined or obfuscated and practically is not alienated.  Adding new attributes requires the user to devise new synthetic names.
 
 Web publication applications, as information systems, are to implement filtering functions, differentiating the value attributes and their metadata.  Screen widgets label names either defined in application configuration or figured out from the attribute names.  Lack of ontological (vocabulary) formal domain definition forces developer to spend more efforts for the user interface implementation.
 
@@ -242,15 +242,15 @@ af:RUAF_996 rdf:type owl:NamedIndividual ,
 
 Viewer application is a Web-2.0 browser widget composed out of React components.  The application maintains its state with Redux. Properly used Redux allows one to control viewer widgets content and structures solely by defining state change functions.  The state transitions happened whenever a set of visualized faults has changed.
 
-Rendering maps is based on React wrapper of \texttt{leaflet.js} library.  The library allows one to draw interactive graphics objects (polygons) on a topological basis.  Leaflet supports various sources of the bases such as \href{https://openstreetmap.org/}{openstrrtmpa.org}, which is default one.  Fault shapes were converted from \texttt{KML} format to leaflet interpretable \texttt{JSON} and are being loaded by application on demand from web server.
+Rendering maps is based on React wrapper of \texttt{leaflet.js} library.  The library allows one to draw interactive graphics objects (polygons) on a topological basis.  Leaflet supports various sources of the bases, such as \href{https://openstreetmap.org/}{openstrrtmpa.org}, which is default one.  Fault shapes were converted from \texttt{KML} format to leaflet interpretable \texttt{JSON} and are being loaded by application on demand from web server.
 
-By default, viewer shows all faults from KG, the result of a SPARQL query requesting all objects of a class \texttt{aft:Fault}\footnote{Abbreviated namespace synonym of \url{http://irnok.net/ontologies/ActiveFaultTerms\#Fault}.}, \emph{i.e.} all the instances\footnote{All faults are instances of \texttt{aft:Fault}.}.  There is a form in the user interface for setting filtering conditions.  They change the default SPARQL query, adding restrictions.  For the debugging and developing, one version of the viewer contains a form for free-form SPARQL query definition, which execution results also showed as a fault map.
+By default, the viewer shows all faults from KG, the result of a SPARQL query requesting all objects of a class \texttt{aft:Fault}\footnote{Abbreviated namespace synonym of \url{http://irnok.net/ontologies/ActiveFaultTerms\#Fault}.}, \emph{i.e.} all the instances\footnote{All faults are instances of \texttt{aft:Fault}.}.  There is a form in the user interface for setting filtering conditions.  They change the default SPARQL query, adding restrictions.  For the debugging and developing, one version of the viewer contains a form for free-form SPARQL query definition, which execution results also showed as a fault map.
 
 Viewing fault attributes is implemented as a form document improved with \texttt{RDFa} markup.  This markup originates from results of SPARQL query selecting all the predicate relation for the chosen fault.
 %
 % \subsection{Examples of the usage}
 %
-In Figure~\ref{fig:ex}, viewer window is shown.  The image consists of topological basis loaded from \texttt{openstreetmap.org} server, faults drawn over the basis, filter form at the left hand side, expanding form of free-text SPARQL query, popup with fault name pointing the fault shape, and a form showing known attributes of the fault.  As a subject of interest, Irkut-Ushakovsky fault extended through Irkutsk city is chosen.
+In Figure~\ref{fig:ex}, viewer window is shown.  The image consists of a topological basis loaded from server \texttt{openstreetmap.org}, faults drawn over the basis, filter form at the left-hand side, expanding form of free-text SPARQL query, popup with fault name pointing to the fault shape, and a form showing known attributes of the fault.  As a subject of interest, Irkut-Ushakovsky fault extended through Irkutsk city is chosen.
 
 \begin{figure}
   \centering
@@ -262,7 +262,7 @@ In Figure~\ref{fig:ex}, viewer window is shown.  The image consists of topologic
 
 \section{Related Works}
 
-The activity related to the field of our investigation are observed since beginning of 2010-th.  At that time probably a lot of vocabularies were standardized, their representation data formats become widely used, as well as various XML processing techniques and tools were developed, \emph{e.g.}, XPath, XQuery, XSL\footnote{Abbreviation of eXtensible Stylesheet Language, a technology for processing XML structures.}.  SPARQL standards were acknowledged (2008, v.~1.0, 2013, v.~1.1).  Thus, in early 2010-ths Semantic Web becomes not only academic field of interest, but also a set of technologies, oriented on solving practical problems. We would like to mention the following projects representing the state of the art in the domain.
+The activity related to the field of our investigation are observed since beginning of 2010-th.  At that time probably a lot of vocabularies were standardized, their representation data formats become widely used, as well as various XML processing techniques and tools were developed, \emph{e.g.}, XPath, XQuery, XSL\footnote{Abbreviation of eXtensible Stylesheet Language, a technology for processing XML structures.}.  SPARQL standards were acknowledged (2008, v.~1.0, 2013, v.~1.1).  Thus, in early 2010-ths Semantic Web becomes not only academic field of interest, but also a set of technologies, oriented on solving practical problems. We would like to mention the following projects, representing the state of the art in the domain.
 
   The project \cite{lgd} was to represent OpenSteetMap (OSM) data as a KG, researchers
   \begin{itemize}
@@ -270,7 +270,7 @@ The activity related to the field of our investigation are observed since beginn
   \item Convert OSM data into RDF adhering LOD principles;
   \item Designed a vocabulary for object georeferencing;
   \item Related the objects to DBpedia, GeoNames, various icon sets;
-  \item Developed a taxonomy of the objects on a various levels (road~\to~way (list of nodes)); % and Fig 3 of the LGD paper.
+  \item Developed a taxonomy of the objects on various levels (road~\to~way (list of nodes)); % and Fig 3 of the LGD paper.
   \item Stated the relations between nodes and means for defining complex objects;
   \item Implemented REST and SPARQL endpoints for actual data;
   \item Realized a live updates services from OSM change sets.
@@ -281,7 +281,7 @@ The activity related to the field of our investigation are observed since beginn
   \begin{itemize}
   \item KG includes diverse information as port calls made by oceanographic cruises, physical sample metadata, research project funding and staffing, and authorship of technical reports;
   \item Implements LOD (4 of 5 stars) and federated SPARQL integration between distributed parts of KG;
-  \item Contains 45 millions RDF triples with vocabularies and geo-visualization tools
+  \item Contains 45 millions RDF triples with vocabularies and geovisualization tools
   \item Describes interlinked expeditions (\textbf{R2}), oceanography (\textbf{BCO-DMO}), ocean floor microbiome (\textbf{IODP}), marine life papers (\textbf{MBLWHOI}), rock samples (\textbf{SESAR}), metadata of external research (\textbf{DataONE}),  projects \& conferences (\textbf{AGU-NSF}), sediment geochemistry (\textbf{NGDB}), Antarctica ice (\textbf{USAP}).
   \end{itemize}
   In the project, an update procedure (harvesting) is implemented to ensure the consistence of the KG w.r.t. the geo-base ontology (GBO).
@@ -302,7 +302,7 @@ The activity related to the field of our investigation are observed since beginn
 
 \section{Future activity plan}
 
-In our project, in the far perspective, we are to develop tools for modeling natural phenomena, \emph{e.g.}, distribution of pollutant elements originating from faults and anthropogenic sources.  And in this paper, we investigate Web 3.0 technologies for constructing nowadays WEB-GIS software.
+In our project, from the far perspective, we are to develop tools for modeling natural phenomena, \emph{e.g.}, distribution of pollutant elements originating from faults and anthropogenic sources.  And in this paper, we investigate Web 3.0 technologies for constructing nowadays WEB-GIS software.
 
 Further development plan is as follows.
 \begin{enumerate}
@@ -340,7 +340,7 @@ The proposed technology and software allows one to construct Web-GIS systems for
     \end{itemize}
   \end{itemize}
 
-In the most of domains, the existing data can be easily converted to a KG, loaded to a KG server and be accessed via SPARQL endpoints.  A familiar tabular representation can be reconstructed with queries.  Spending a reasonable time finding relevant to the domain vocabularies (ontologies) and adapting data conversion procedures to these vocabularies, one can obtain a common model description of a problem and shift data publishing and integration to a more higher level.
+In the most of the domains, the existing data can be easily converted to a KG, loaded to a KG server and be accessed via SPARQL endpoints.  A familiar tabular representation can be reconstructed with queries.  Spending a reasonable time finding relevant to the domain vocabularies (ontologies) and adapting data conversion procedures to these vocabularies, one can obtain a common model description of a problem and shift data publishing and integration to a higher level.
 
 In order to construct an environment for natural phenomena spatial modeling and master KG technologies, we created a GIS viewer for existing data converted in a KG \cite{lunina,afs}.  KG structures allowed us to improve structure of data originated from tables with forced violations imposed by a tabular representation of the scientific research data.  The viewer interprets SPARQL queries results as a map.   The nowadays Web 2.0 and 3.0 technologies allowed us to construct individual GIS application in a reasonable time, namely, two students constructed the application MVP in two months.  This is thanks to the present levels of technologies and quality of used libraries.
 
@@ -373,7 +373,7 @@ In order to construct an environment for natural phenomena spatial modeling and 
 
 \bibitem{geolink} M.~Cheatham, A.~Krisnadhi, R.~Amini, P.~Hitzler, \emph{et al}. The GeoLink knowledge graph, Big Earth Data, 2:2 (2018), pp.~131-143. \doi{10.1080/20964471.2018.1469291}
 
-\bibitem{abid} T.~Abid, H.~Zarzour. Integrating linked open data in geographical information system. Procs of. International Conference on Information Technology for Organization Development. Oct 19-20, 2014, University of Tebessa, Tebessa, Algeria (2014).
+\bibitem{abid} T.~Abid, H.~Zarzour. Integrating linked open data in geographical information system. Procs. of. International Conference on Information Technology for Organization Development. Oct 19-20, 2014, University of Tebessa, Tebessa, Algeria (2014).
 
 \bibitem{iwaniak1} A.~Iwaniak, I.~Kaczmarek, M.~Strzelecki, J.~Lukowicz, P.~Jankowski. Enriching and improving the quality of linked data with GIS. Open Geosciences, Vol.~8, 1~(2016) pp.~323-336. \doi{10.1515/geo-2016-0020}
 
@@ -381,7 +381,7 @@ In order to construct an environment for natural phenomena spatial modeling and 
 
 \bibitem{zont19} E.~Cherkashin, A.~Shigarov, V.~Paramonov. Representation of MDA transformation with logical objects. International Multi-Conference on Engineering, Computer and Information Sciences (SIBIRCON), Novosibirsk, Russia. (2019) 0913--0918 \doi{10.1109/SIBIRCON48586.2019.8958008}
 
-\bibitem{authoring} E.~Cherkashin, A.~Shigarov, V.~Paramonov, A.~Mikhailov, Digital archives supporting document content inference, Procs of 42-nd International Convention on Information and Communication Technology Electronics and Microelectronics (MIPRO), May, 20–24, 2019. pp. 1037-1042. \doi{https://doi.org/10.23919/MIPRO.2019.8757196}
+\bibitem{authoring} E.~Cherkashin, A.~Shigarov, V.~Paramonov, A.~Mikhailov, Digital archives supporting document content inference, Procs. of 42-nd International Convention on Information and Communication Technology Electronics and Microelectronics (MIPRO), May, 20–24, 2019. pp. 1037-1042. \doi{https://doi.org/10.23919/MIPRO.2019.8757196}
 \end{thebibliography}
 
 %%
